@@ -1,10 +1,10 @@
-# midea-vue-tpl
+# vue-pc-tpl
 
 > A Vue.js project
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 yarn/npm install
 
@@ -25,3 +25,4 @@ yarn/npm run serve
 yarn/npm run deploySit #部署sit环境
 yarn/npm run deployUat #部署uat环境
 yarn/npm run deployProd #部署生产环境
+```
