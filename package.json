@@ -19,7 +19,8 @@
     "serve": "serve -s dist",
     "deploySit": "node scripts/deploy.js --sit",
     "deployUat": "node scripts/deploy.js --uat",
-    "deployProd": "node scripts/deploy.js --prod"
+    "deployProd": "node scripts/deploy.js --prod",
+    "new:comp": "node autoGenerate/generateComponent.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

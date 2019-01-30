@@ -13,8 +13,17 @@ function importAll(r) {
   r.keys().forEach(key => {
     if (key == './index.js') return;
     let obj = r(key).default;
-    for (let value of Object.values(obj)) {
-      Mock.mock(RegExp(value.url), value.method, value.res);
+    //加载api配置对象
+    let originApiConf = require(`../util/api/${key.slice(2)}`).default;
+
+    for (let [key, value] of Object.entries(obj)) {
+      //url and method 来自API配置对象，mock响应函数来自mock配置对象
+      if (!originApiConf[key].mock) continue;
+      Mock.mock(
+        RegExp(originApiConf[key].url),
+        originApiConf[key].method,
+        value.mockRes
+      );
     }
   });
 }

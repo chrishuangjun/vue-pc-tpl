@@ -2,9 +2,7 @@ import Mock from 'mockjs';
 export default {
   // post提交
   login: {
-    url: 'system/user/login',
-    method: 'post',
-    res: () => {
+    mockRes: () => {
       return Mock.mock({
         code: 0,
         data: {

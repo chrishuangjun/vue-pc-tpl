@@ -3,5 +3,6 @@ export default {
   login: {
     url: 'system/user/login',
     method: 'post',
+    mock: true,
   },
-}
+};
