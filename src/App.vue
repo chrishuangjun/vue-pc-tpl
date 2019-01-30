@@ -1,29 +1,29 @@
 <template>
-    <div id="app">
-        <i class="iconfont icon-bear"></i>
-        <router-view/>
-    </div>
+  <div id="app">
+    <i class="iconfont icon-bear"></i>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'App'
-    }
+export default {
+  name: 'App',
+};
 </script>
 
 <style scoped lang="scss">
-    @import "assets/css/var.scss";
+// @import "assets/css/var.scss";
 
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 
-    .icon-bear{
-        color:$red;
-    }
+.icon-bear {
+  color: $red;
+}
 </style>
