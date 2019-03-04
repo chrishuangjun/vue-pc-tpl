@@ -8,14 +8,14 @@ import 'element-ui/lib/theme-chalk/index.css';
 import { apiHttp } from './util/api/index';
 import 'normalize.css';
 import './assets/iconfont/iconfont.css';
-import './mock';
+// import './mock';
 
 Vue.use(Element);
 
 Vue.config.productionTip = false;
 
 Vue.prototype.$apiHttp = apiHttp;
-
+debugger;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
