@@ -1,26 +1,38 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "modules": false,
-        "targets": {
-          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-        }
-      }
-    ],
-    "stage-2"
-  ],
-  "plugins": [
-    "transform-vue-jsx",
-    "transform-runtime"
-    //按需引入element-ui配置项
-    // [
-    //   "component",
-    //   {
-    //     "libraryName": "element-ui",
-    //     "styleLibraryName": "theme-chalk"
-    //   }
-    // ]
-  ]
+	"presets": [
+		[
+			"env",
+			{
+				"modules": false,
+				"targets": {
+					"browsers": [
+						"> 1%",
+						"last 2 versions",
+						"not ie <= 8"
+					]
+				}
+			}
+		],
+		"stage-2"
+	],
+	"plugins": [
+		"transform-vue-jsx",
+		"transform-runtime",
+		//按需引入element-ui配置项
+		// [
+		//   "component",
+		//   {
+		//     "libraryName": "element-ui",
+		//     "styleLibraryName": "theme-chalk"
+		//   }
+		// ]
+		//按需引入mui,需要安装babel-plugin-import插件
+		[
+			"import",
+			{
+				"libraryName": "iview",
+				"libraryDirectory": "src/components"
+			}
+		]
+	]
 }

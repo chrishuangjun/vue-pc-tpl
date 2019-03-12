@@ -5,7 +5,9 @@
 import axios from 'axios'
 import router from '../../router/index'
 import { Message } from 'element-ui'
-
+import { Spin } from 'mui'
+import qs from 'qs'
+let loadingCounter = 0 // loading计数器
 /**
  * 提示函数
  * 禁止点击蒙层、显示一秒后关闭
@@ -41,15 +43,15 @@ const errorHandle = (status, other) => {
     case 401:
       toLogin()
       break
-    // 403 token过期
-    // 清除token并跳转登录页
+      // 403 token过期
+      // 清除token并跳转登录页
     case 403:
       tip('登录过期，请重新登录')
       setTimeout(() => {
         toLogin()
       }, 1000)
       break
-    // 404请求不存在
+      // 404请求不存在
     case 404:
       tip('请求的资源不存在')
       break
@@ -61,19 +63,21 @@ const errorHandle = (status, other) => {
 // 创建axios实例
 var instance = axios.create({ timeout: 1000 * 12 })
 
-instance.defaults.baseURL =
-  process.env.NODE_ENV.indexOf('local') !== -1
-    ? '/local'
-    : window.location.origin + '/api'
+instance.defaults.baseURL = process.env.NODE_ENV.indexOf('local') !== -1 ? '/local' : window.location.origin + '/api'
 // 设置post请求头
-instance.defaults.headers.post['Content-Type'] =
-  'application/x-www-form-urlencoded'
+instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 /**
  * 请求拦截器
  * 每次请求前，如果存在token则在请求头中携带token
  */
 instance.interceptors.request.use(
   config => {
+    let paramsObj = qs.parse(config.data)
+    if (paramsObj.isShowLoading) {
+      Spin.show()
+      loadingCounter++
+      delete config.isShowLoading
+    }
     return config
   },
   error => Promise.error(error)
@@ -82,10 +86,14 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
   // 请求成功
-  res => (res.status === 200 ? Promise.resolve(res) : Promise.reject(res)),
+  res => {
+    res.status === 200 ? Promise.resolve(res) : Promise.reject(res)
+    hideLoading()
+  },
   // 请求失败
   error => {
     const { response } = error
+    hideLoading()
     if (response) {
       // 请求已发出，但是不在2xx的范围
       errorHandle(response.status, response.data.message)
@@ -99,5 +107,13 @@ instance.interceptors.response.use(
     }
   }
 )
-
+/**
+ * 隐藏loading
+ */
+function hideLoading () {
+  if (loadingCounter > 0) {
+    Spin.hide()
+    loadingCounter--
+  }
+}
 export default instance
