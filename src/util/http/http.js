@@ -4,8 +4,7 @@
  */
 import axios from 'axios'
 import router from '../../router/index'
-import { Message } from 'element-ui'
-import { Spin } from 'mui'
+import { Spin, Message } from 'mui'
 import qs from 'qs'
 let loadingCounter = 0 // loading计数器
 /**
@@ -13,9 +12,10 @@ let loadingCounter = 0 // loading计数器
  * 禁止点击蒙层、显示一秒后关闭
  */
 const tip = msg => {
-  Message({
-    message: msg,
-    duration: 1000
+  Message.info({
+    content: msg,
+    duration: 2,
+    closable: true
   })
 }
 

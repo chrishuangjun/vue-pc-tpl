@@ -6,15 +6,15 @@ import router from './router'
 // import Mui from 'mui'
 import { Spin } from 'mui'
 import 'mui/dist/styles/mui.css'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+// import Element from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 import { apiHttp } from './util/api/index'
 import 'normalize.css'
 import './assets/iconfont/iconfont.css'
 // import './mock';
 import vars from './assets/css/var.scss'
 
-Vue.use(Element)
+// Vue.use(Element)
 // Vue.use(Mui)
 
 Vue.config.productionTip = false
