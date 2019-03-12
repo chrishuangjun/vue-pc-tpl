@@ -6,8 +6,12 @@
 </template>
 
 <script>
+// import vars from './assets/css/var.scss';
 export default {
   name: 'App',
+  created() {
+    console.log(this.$vars.red);
+  },
 };
 </script>
 

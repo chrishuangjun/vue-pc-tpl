@@ -1,12 +1,13 @@
 const fs = require('fs');
 const archiver = require('archiver');
+const path = require('path');
 const env = 'sit';
 // const chalk = require('chalk')
 
 module.exports = function() {
   //   console.log(chalk.cyan('  Zip files.\n'))
   //   console.time('key')
-  var output = fs.createWriteStream(`publish/test.zip`);
+  var output = fs.createWriteStream(`publish/ibcp_protal.zip`);
   var archive = archiver('zip');
 
   output.on('close', function() {
@@ -23,6 +24,11 @@ module.exports = function() {
   });
 
   archive.pipe(output);
-  archive.glob('./dist' + '/**');
+  archive.directory(path.resolve(__dirname, '../dist/'), false, function(
+    //需要压缩文件的目录
+    entryData
+  ) {
+    return entryData.name === 'dist.zip' ? false : entryData; //过滤不需要压缩的文件
+  });
   archive.finalize();
 };

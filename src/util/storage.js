@@ -24,14 +24,14 @@ export const getStorageParse = (name, index = 0) => {
   let objStr = getStorage(name, index)
   if (objStr === null) return null
   objStr = objStr
-    .replace(/[\\"']/g, function(r) {
+    .replace(/[\\"']/g, function (r) {
       return '\\' + r
     })
     .replace(/%/g, '\\x25')
     .replace(/\n/g, '\\n')
     .replace(/\r/g, '\\r')
     .replace(/\x01/g, '\\x01')
-    .replace(/[\\\^\$\*\+\?\{\}\.\(\)\[\]]/g, function(a) {
+    .replace(/[\\\^\$\*\+\?\{\}\.\(\)\[\]]/g, function (a) {
       return '\\' + a
     })
     .replace(/function/gi, '')

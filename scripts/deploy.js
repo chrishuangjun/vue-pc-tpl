@@ -28,8 +28,6 @@ build.on('close', function(code) {
     return;
   }
   spinner.text = '打包完成，开始上传...';
-
-  require('./produce-zip')();
   const conn = new Client();
   conn
     .on('ready', function() {

@@ -1,2 +1,5 @@
-$red:#F00;
-$black:#000;
+$red: #f00;
+$black: #000;
+:export {
+  red: $red;
+}

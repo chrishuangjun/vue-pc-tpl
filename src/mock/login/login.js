@@ -1,4 +1,4 @@
-import Mock from 'mockjs';
+import Mock from 'mockjs'
 export default {
   // post提交
   login: {
@@ -6,10 +6,10 @@ export default {
       return Mock.mock({
         code: 0,
         data: {
-          name: '@cname()',
+          name: '@cname()'
         },
-        msg: '',
-      });
-    },
-  },
-};
+        msg: ''
+      })
+    }
+  }
+}

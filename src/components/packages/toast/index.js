@@ -7,12 +7,12 @@ import toastComponent from './toast.vue'
 const ToastConstructor = vue.extend(toastComponent)
 
 // 定义弹出组件的函数 参数option和vue实例化参数一致
-function showToast(option) {
+function showToast (option) {
   // 实例化一个 toast.vue
   const toastVM = new ToastConstructor({
-    data() {
+    data () {
       return option
-    },
+    }
   })
 
   // 把 实例化的 toast.vue 添加到 body 里
@@ -20,15 +20,15 @@ function showToast(option) {
 }
 
 // 注册为全局组件的函数
-function registryToast() {
+function registryToast () {
   // 将组件注册到 vue 的 原型链里去,
   // 这样就可以在所有 vue 的实例里面使用 this.$toast()
   vue.prototype.$toast = showToast
   ;['top', 'bottom', 'center'].forEach(item => {
-    vue.prototype.$toast[item] = function(opt) {
+    vue.prototype.$toast[item] = function (opt) {
       vue.prototype.$toast(
         Object.assign(opt, {
-          position: item,
+          position: item
         })
       )
     }
