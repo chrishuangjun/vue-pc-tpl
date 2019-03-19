@@ -8,17 +8,20 @@
 
 <script>
 // import vars from './assets/css/var.scss';
-import { Spin } from 'mui'
+import { Spin } from 'mui';
 export default {
-  name: 'App',
-  created () {
-    console.log(this.$vars.red)
-    // this.$Spin.show()
-  },
-  components: {
-    spin: Spin
-  }
-}
+    name: 'App',
+    created() {
+        console.log(this.$vars.red);
+        console.log(this.$vars.black);
+    },
+    mounted() {
+    // this.$Spin.show();
+    },
+    components: {
+        spin: Spin
+    }
+};
 </script>
 
 <style scoped lang="scss">
