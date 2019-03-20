@@ -3,7 +3,6 @@
  */
 import axios from '../util/http/http'; // 导入http中创建的axios实例
 import qs from 'qs'; // 根据需求是否导入qs模块
-
 let api = {};
 /**
  * 自动引入api模块
